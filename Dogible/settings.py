@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', #we're going to use this in this project.
-    'Dogible' #enables access to the dogible stuff.
+    #'Dogible' #enables access to the dogible stuff.
+    'dogapi'
 ]
 
 MIDDLEWARE = [
