@@ -3,8 +3,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator #interes
 
 # Create your models here.
 
-class Dogs(models.Model):
-
+class Dog(models.Model):
+    '''appearently if these aren't named single '''
     GENDER_CHOICES = [
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -22,7 +22,7 @@ class Dogs(models.Model):
     def __str__(self):
         return self.name
 
-class Breeds(models.Model):
+class Breed(models.Model):
     '''never really done these before so this is a cool test out.
     https: // docs.djangoproject.com / en / 5.1 / ref / models / fields /  # choices
     and https://docs.djangoproject.com/en/5.1/ref/validators/#minvaluevalidator '''
