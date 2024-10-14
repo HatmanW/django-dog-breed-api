@@ -1,3 +1,4 @@
+#Dogible\urls.py
 """
 URL configuration for Dogible project.
 
@@ -15,8 +16,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+'''this part is always one of those engmatic parts of django
+I remember John Elder explaining the concept 
+of going to the main app, and pointing one URL.py file to another
+then quote "never having to touch the main application URL.py again." 
+or something similar.'''
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('dogapi.urls'))
+
 ]

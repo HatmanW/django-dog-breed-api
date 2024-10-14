@@ -1,26 +1,6 @@
+#dogapi/models.py
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator #interesting import
-
-# Create your models here.
-
-class Dog(models.Model):
-    '''appearently if these aren't named single '''
-    GENDER_CHOICES = [
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Other', 'Other')
-    ]
-
-    name = models.CharField(max_length=100)
-    age = models.IntegerField()
-    breed = models.CharField(max_length=100)
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    color = models.CharField(max_length=50)
-    favorite_food = models.CharField(max_length=50)
-    favoritetoys = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
 
 class Breed(models.Model):
     '''never really done these before so this is a cool test out.
@@ -35,7 +15,7 @@ class Breed(models.Model):
     ]
 
     name = models.CharField(max_length=100)
-    size = models.CharField(max_length=50, choices=SIZE_OPTIONS)
+    size = models.CharField(max_length=10, choices=SIZE_OPTIONS)
     friendliness = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     trainability = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     sheddingamount = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
@@ -43,6 +23,27 @@ class Breed(models.Model):
 
     def __str__(self):
         return self.name
+
+class Dog(models.Model):
+    '''appearently if these aren't named single '''
+    GENDER_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other')
+    ]
+
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    breed = models.ForeignKey('Breed', on_delete=models.CASCADE)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    color = models.CharField(max_length=50)
+    favorite_food = models.CharField(max_length=50)
+    favoritetoys = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 
 
 

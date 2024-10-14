@@ -1,8 +1,9 @@
+#dogapi/serializers.py
 from rest_framework import serializers
 from .models import Dog, Breed
 
 class DogSerializer(serializers.ModelSerializer):
-    breed = serializers.PrimaryKeyRelatedField(queryset=Breed.objects.all())
+    breed = serializers.PrimaryKeyRelatedField(queryset=Breed.objects.all())  # Expect breed ID
 
     class Meta:
         model = Dog
